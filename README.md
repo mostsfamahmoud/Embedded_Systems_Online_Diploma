@@ -2,7 +2,7 @@
 
 ## Contents
 
-### First Term ![image](https://progress-bar.dev/27/?title=Done)
+### First Term ![image](https://progress-bar.dev/27/?title= In Progress)
 
 - [Unit 1: Diploma Prerequisites](https://github.com/mostsfamahmoud/Embedded_Systems_Online_Diploma/tree/main) ![image](https://progress-bar.dev/100/?title=No_Assignments&color=bababa)
 - [Unit 2: C Programming](./Unit%202%20(C%20Programming)) ![image](https://progress-bar.dev/35/)
