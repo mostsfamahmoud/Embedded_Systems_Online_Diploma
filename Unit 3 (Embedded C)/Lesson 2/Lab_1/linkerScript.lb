@@ -1,0 +1,40 @@
+/* Unit3_Lesson2_Lab1
+   Created By: Mostafa Mahmoud
+   Date: 24/8/2023
+   File: linkerScript.lb   
+*/
+
+ENTRY(reset)  /* Define the entry point of the application */
+
+/* List of the memory sections */
+MEMORY
+{
+    Mem (rwx) : ORIGIN = 0x00000000, LENGTH = 64M
+}
+
+SECTIONS
+{
+    . = 0x10000 ;  /* According to the specs */
+    .startup . :
+    {
+        startup.o(.text)
+    }> Mem
+    
+    .text :
+    {
+        *(.text) *(.rodata)   /* merging all remaining .txt and .rodata (input sections) to the output.txt section */
+    }> Mem
+    
+    .data :
+    {
+        *(.data)
+    }> Mem
+    
+    .bss :
+    {
+        *(.bss) *(COMMON)
+    }> Mem
+    
+    . = . + 0x1000 ;    /* 4KB of stack Memory */
+    stack_top = . ;
+}
