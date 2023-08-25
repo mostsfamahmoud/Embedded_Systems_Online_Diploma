@@ -12,9 +12,10 @@
 
 ---
 
-## Overall progress ![image](https://progress-bar.dev/0.75/?scale=3&title=Terms&suffix=&width=230&color=aa00ff)
+## Overall progress ![image](https://progress-bar.dev/1/?scale=3&title=Terms&suffix=&width=230&color=aa00ff)
 
-[![image](https://github.com/Mina-Karam/Master_Embedded_Systems/blob/master/Certification.png)](https://www.learn-in-depth.com/online-diploma/mostafamahmoud.cse%40gmail.com)
+[![image](My_Certificate.png)](https://www.learn-in-depth.com/online-diploma/mostafamahmoud.cse%40gmail.com)
+
 
 ---
 
