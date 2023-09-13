@@ -1,0 +1,148 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+bss_Variables       0x3               main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+flash            0x08000000         0x00020000         xr
+sram             0x20000000         0x00005000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x08000000      0x214
+ *(.vectors*)
+ .vectors       0x08000000       0x88 startup.o
+                0x08000000                vector_table
+ *(.text*)
+ .text          0x08000088       0xc0 main.o
+                0x08000088                NMI_Handler
+                0x08000094                SysTick_Handler
+                0x080000a0                main
+ .text          0x08000148       0xc8 startup.o
+                0x08000148                Reset_Handler
+                0x08000204                DebugMon_Handler
+                0x08000204                HardFault_Handler
+                0x08000204                PendSV_Handler
+                0x08000204                EXTI3_IRQHandler
+                0x08000204                WWDG_Handler
+                0x08000204                EXTI0_IRQHandler
+                0x08000204                RTC_Handler
+                0x08000204                UsageFault_Handler
+                0x08000204                DMA1_Channel4_IRQHandler
+                0x08000204                DMA1_Channel7_IRQHandler
+                0x08000204                EXTI2_IRQHandler
+                0x08000204                Tamper_Handler
+                0x08000204                DMA1_Channel6_IRQHandler
+                0x08000204                DMA1_Channel1_IRQHandler
+                0x08000204                Default_Handler
+                0x08000204                MemManage_Handler
+                0x08000204                SVC_Handler
+                0x08000204                DMA1_Channel5_IRQHandler
+                0x08000204                EXTI4_IRQHandler
+                0x08000204                DMA1_Channel3_IRQHandler
+                0x08000204                Flash_Handler
+                0x08000204                RCC_Handler
+                0x08000204                PVD_Handler
+                0x08000204                EXTI1_IRQHandler
+                0x08000204                DMA1_Channel2_IRQHandler
+                0x08000204                BusFault_Handler
+ *(.rodata)
+ .rodata        0x08000210        0x4 main.o
+                0x08000210                constVariables
+                0x08000214                _E_Text = .
+
+.glue_7         0x08000214        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x08000214        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x08000214        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x08000214        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x08000214        0x0
+ .iplt          0x00000000        0x0 main.o
+
+.rel.dyn        0x08000214        0x0
+ .rel.iplt      0x00000000        0x0 main.o
+
+.data           0x20000000        0x8 load address 0x08000214
+                0x20000000                _S_Data = .
+ *(.data)
+ .data          0x20000000        0x8 main.o
+                0x20000000                R_ODR
+                0x20000004                g_variables
+ .data          0x20000008        0x0 startup.o
+                0x20000008                _E_Data = .
+
+.igot.plt       0x20000008        0x0 load address 0x0800021c
+ .igot.plt      0x00000000        0x0 main.o
+
+.bss            0x20000008     0x1003 load address 0x0800021c
+                0x20000008                _S_Bss = .
+ *(.bss*)
+ .bss           0x20000008        0x0 main.o
+ .bss           0x20000008        0x0 startup.o
+                0x20000008                . = ALIGN (0x4)
+                0x20000008                _E_Bss = .
+                0x20000008                . = ALIGN (0x4)
+                0x20001008                . = (. + 0x1000)
+ *fill*         0x20000008     0x1000 
+                0x20001008                _stack_top = .
+ COMMON         0x20001008        0x3 main.o
+                0x20001008                bss_Variables
+LOAD main.o
+LOAD startup.o
+OUTPUT(LearnInDepth_Cortex_M3.elf elf32-littlearm)
+
+.debug_info     0x00000000      0x32a
+ .debug_info    0x00000000      0x1a9 main.o
+ .debug_info    0x000001a9      0x181 startup.o
+
+.debug_abbrev   0x00000000      0x1bd
+ .debug_abbrev  0x00000000       0xfd main.o
+ .debug_abbrev  0x000000fd       0xc0 startup.o
+
+.debug_loc      0x00000000       0xf4
+ .debug_loc     0x00000000       0x90 main.o
+ .debug_loc     0x00000090       0x64 startup.o
+
+.debug_aranges  0x00000000       0x40
+ .debug_aranges
+                0x00000000       0x20 main.o
+ .debug_aranges
+                0x00000020       0x20 startup.o
+
+.debug_line     0x00000000       0xec
+ .debug_line    0x00000000       0x6e main.o
+ .debug_line    0x0000006e       0x7e startup.o
+
+.debug_str      0x00000000      0x1d4
+ .debug_str     0x00000000      0x148 main.o
+                                0x16f (size before relaxing)
+ .debug_str     0x00000148       0x8c startup.o
+                                0x183 (size before relaxing)
+
+.comment        0x00000000       0x11
+ .comment       0x00000000       0x11 main.o
+                                 0x12 (size before relaxing)
+ .comment       0x00000000       0x12 startup.o
+
+.ARM.attributes
+                0x00000000       0x33
+ .ARM.attributes
+                0x00000000       0x33 main.o
+ .ARM.attributes
+                0x00000033       0x33 startup.o
+
+.debug_frame    0x00000000       0xa8
+ .debug_frame   0x00000000       0x5c main.o
+ .debug_frame   0x0000005c       0x4c startup.o
