@@ -1,0 +1,7 @@
+080000f4 t _reset
+080000fa t _Vector_Handler
+20000000 B bss_Variables
+080000fc T constVariables
+08000104 D g_variables
+0800004c T main
+08000100 D R_ODR

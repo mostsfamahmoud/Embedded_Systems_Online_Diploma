@@ -1,0 +1,7 @@
+00000003 C bss_Variables
+00000000 R constVariables
+00000004 D g_variables
+00000018 T main
+00000000 T NMI_Handler
+00000000 D R_ODR
+0000000c T SysTick_Handler
