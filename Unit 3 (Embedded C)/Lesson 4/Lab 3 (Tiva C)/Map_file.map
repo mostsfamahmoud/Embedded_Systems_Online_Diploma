@@ -1,0 +1,133 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+flash            0x00000000         0x20000000         xr
+sram             0x20000000         0x20000000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+
+.text           0x00000000      0x210
+ *(.vectors*)
+ .vectors       0x00000000       0x88 CortexM4_startup.o
+                0x00000000                g_ptr2Func_Vectors
+ *(.text*)
+ .text          0x00000088       0xc8 CortexM4_startup.o
+                0x00000088                Reset_Handler
+                0x00000144                DebugMon_Handler
+                0x00000144                HardFault_Handler
+                0x00000144                SysTick_Handler
+                0x00000144                PendSV_Handler
+                0x00000144                NMI_Handler
+                0x00000144                EXTI3_IRQHandler
+                0x00000144                WWDG_Handler
+                0x00000144                EXTI0_IRQHandler
+                0x00000144                RTC_Handler
+                0x00000144                UsageFault_Handler
+                0x00000144                DMA1_Channel4_IRQHandler
+                0x00000144                DMA1_Channel7_IRQHandler
+                0x00000144                EXTI2_IRQHandler
+                0x00000144                Tamper_Handler
+                0x00000144                DMA1_Channel6_IRQHandler
+                0x00000144                DMA1_Channel1_IRQHandler
+                0x00000144                Default_Handler
+                0x00000144                MemManage_Handler
+                0x00000144                SVC_Handler
+                0x00000144                DMA1_Channel5_IRQHandler
+                0x00000144                EXTI4_IRQHandler
+                0x00000144                DMA1_Channel3_IRQHandler
+                0x00000144                Flash_Handler
+                0x00000144                RCC_Handler
+                0x00000144                PVD_Handler
+                0x00000144                EXTI1_IRQHandler
+                0x00000144                DMA1_Channel2_IRQHandler
+                0x00000144                BusFault_Handler
+ .text          0x00000150       0xc0 main.o
+                0x00000150                main
+ *(.rodata)
+                0x00000210                _E_Text = .
+
+.glue_7         0x00000210        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x00000210        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x00000210        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x00000210        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x00000210        0x0
+ .iplt          0x00000000        0x0 CortexM4_startup.o
+
+.rel.dyn        0x00000210        0x0
+ .rel.iplt      0x00000000        0x0 CortexM4_startup.o
+
+.data           0x20000000        0x0 load address 0x00000210
+                0x20000000                _S_Data = .
+ *(.data)
+ .data          0x20000000        0x0 CortexM4_startup.o
+ .data          0x20000000        0x0 main.o
+                0x20000000                _E_Data = .
+
+.igot.plt       0x20000000        0x0 load address 0x00000210
+ .igot.plt      0x00000000        0x0 CortexM4_startup.o
+
+.bss            0x20000000     0x1000 load address 0x00000210
+                0x20000000                _S_Bss = .
+ *(.bss*)
+ .bss           0x20000000     0x1000 CortexM4_startup.o
+ .bss           0x20001000        0x0 main.o
+                0x20001000                . = ALIGN (0x4)
+                0x20001000                _E_Bss = .
+LOAD CortexM4_startup.o
+LOAD main.o
+OUTPUT(Unit3_Lesson4_Lab3_CortexM4.elf elf32-littlearm)
+
+.debug_info     0x00000000      0x258
+ .debug_info    0x00000000      0x1a8 CortexM4_startup.o
+ .debug_info    0x000001a8       0xb0 main.o
+
+.debug_abbrev   0x00000000      0x145
+ .debug_abbrev  0x00000000       0xdc CortexM4_startup.o
+ .debug_abbrev  0x000000dc       0x69 main.o
+
+.debug_loc      0x00000000       0x9c
+ .debug_loc     0x00000000       0x64 CortexM4_startup.o
+ .debug_loc     0x00000064       0x38 main.o
+
+.debug_aranges  0x00000000       0x40
+ .debug_aranges
+                0x00000000       0x20 CortexM4_startup.o
+ .debug_aranges
+                0x00000020       0x20 main.o
+
+.debug_line     0x00000000       0xfe
+ .debug_line    0x00000000       0x87 CortexM4_startup.o
+ .debug_line    0x00000087       0x77 main.o
+
+.debug_str      0x00000000      0x17a
+ .debug_str     0x00000000      0x163 CortexM4_startup.o
+                                0x18a (size before relaxing)
+ .debug_str     0x00000163       0x17 main.o
+                                 0xf8 (size before relaxing)
+
+.comment        0x00000000       0x11
+ .comment       0x00000000       0x11 CortexM4_startup.o
+                                 0x12 (size before relaxing)
+ .comment       0x00000000       0x12 main.o
+
+.ARM.attributes
+                0x00000000       0x33
+ .ARM.attributes
+                0x00000000       0x33 CortexM4_startup.o
+ .ARM.attributes
+                0x00000033       0x33 main.o
+
+.debug_frame    0x00000000       0x78
+ .debug_frame   0x00000000       0x4c CortexM4_startup.o
+ .debug_frame   0x0000004c       0x2c main.o
